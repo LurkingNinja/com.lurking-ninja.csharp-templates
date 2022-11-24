@@ -1,9 +1,0 @@
-using UnityEditor;
-
-#ROOTNAMESPACEBEGIN#
-[FilePath("#SCRIPTNAME#.save", FilePathAttribute.Location.ProjectFolder)]
-public class #SCRIPTNAME# : ScriptableSingleton<#SCRIPTNAME#>
-{
-	#NOTRIM#
-}
-#ROOTNAMESPACEEND#
