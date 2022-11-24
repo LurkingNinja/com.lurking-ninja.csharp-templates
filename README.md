@@ -3,7 +3,7 @@ Adds the following menu and more importantly shortcuts to create folders and fil
 
 ![Create menu](https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates/blob/main/Screenshot/create_menu.png)
 
-Opening the Tools/LurkingNinja/CSharp Template Config menu point, you will be taken to the settings scriptable object in an Editor folder. This file is purely exists in the Editor, won't be inserted into your built game.
+Opening the Tools/LurkingNinja/CSharp Template Config menu point, you will be taken to the settings scriptable object in an Editor folder. This file purely exists in the Editor, won't be inserted into your built game.
 
 ![Open settings](https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates/blob/main/Screenshot/open_settings.png)
 

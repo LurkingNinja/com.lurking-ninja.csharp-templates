@@ -19,23 +19,5 @@ namespace LurkingNinja.CSharpTemplates.Editor
 		[MenuItem(UnityCsharpMenu, false, 10002)]
 		public static void CreateUnityCsMenu() => ProjectWindowUtil.CreateScriptAssetFromTemplateFile(
 			UnityCsTemplatePath, DEFAULT_BEHAVIOR_FILENAME);
-
-/*
-		[MenuItem(CustomCsharpMenu, false, 10013)]
-		public static void CreateCsMenu() => ProjectWindowUtil.CreateScriptAssetFromTemplateFile(
-			BaseTemplatePath + "NewBehaviourScript.cs.txt", DefaultBehaviorFilename);
-		
-		[MenuItem(CustomInterfaceMenu, false, 10014)]
-		public static void CreateInterfaceMenu() => ProjectWindowUtil.CreateScriptAssetFromTemplateFile(
-			BaseTemplatePath + "NewInterfaceScript.cs.txt", DefaultInterfaceFilename);
-		
-		[MenuItem(ScriptableObjectMenu, false, 10015)]
-		public static void CreateScriptableObjectMenu() => ProjectWindowUtil.CreateScriptAssetFromTemplateFile(
-			BaseTemplatePath + "ScriptableObject.cs.txt", DefaultScriptableFilename);
-		
-		[MenuItem(EditorScriptableObjectMenu, false, 10016)]
-		public static void CreateEditorScriptableObjectMenu() => ProjectWindowUtil.CreateScriptAssetFromTemplateFile(
-			BaseTemplatePath + "ScriptableSingleton.cs.txt", DefaultScriptableFilename);
-*/
     }
 }
