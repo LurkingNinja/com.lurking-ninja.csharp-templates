@@ -1,0 +1,9 @@
+using UnityEngine;
+
+    #ROOTNAMESPACEBEGIN#
+[CreateAssetMenu]
+public class #SCRIPTNAME# : ScriptableObject
+{
+    #NOTRIM#
+}
+#ROOTNAMESPACEEND#

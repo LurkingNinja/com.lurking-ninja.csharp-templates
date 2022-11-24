@@ -1,0 +1,14 @@
+using LurkingNinja.GameFoundation.Managers;
+using UnityEngine;
+
+#ROOTNAMESPACEBEGIN#
+public class #SCRIPTNAME# : NetworkSingleton<#SCRIPTNAME#>
+{
+    // Start is called before the first frame update
+    private void Awake()
+    {
+        #NOTRIM#
+    }
+}
+#ROOTNAMESPACEEND#
+#endif
