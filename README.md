@@ -1,0 +1,1 @@
+# com.lurking-ninja.csharp-templates
