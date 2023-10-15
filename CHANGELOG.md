@@ -1,6 +1,11 @@
 ﻿# Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2023-10-15
+### Changed
+- Remove AssetDatabase.SaveAssets call
+- Initialize settings automatically on install
+
 ## [1.1.0] - 2022-11-24
 ### Added
 - This CHANGELOG
