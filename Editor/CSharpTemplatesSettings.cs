@@ -21,10 +21,10 @@ namespace LurkingNinja.CSharpTemplates.Editor
         internal const string C_SHARP_TEMPLATES_MENU_FILE =
             C_SHARP_TEMPLATES_CONFIG_PATH + "/MenuItems.cs";
 
-        private const string CSharpTemplatesConfigFile =
+        private const string C_SHARP_TEMPLATES_CONFIG_FILE =
             C_SHARP_TEMPLATES_CONFIG_PATH + "/CSharpTemplatesConfig.asset";
-        private const string DefaultInterfaceFilename = "NewInterfaceScript.cs";
-        private const string DefaultScriptableFilename = "NewScriptableObject.cs";
+        private const string DEFAULT_INTERFACE_FILENAME = "NewInterfaceScript.cs";
+        private const string DEFAULT_SCRIPTABLE_FILENAME = "NewScriptableObject.cs";
 
         public List<TemplateEntry> templates = new List<TemplateEntry>
         {
@@ -48,7 +48,7 @@ public class #SCRIPTNAME# : MonoBehaviour
             new()
             {
                 templateName = "Create Interface %#i",
-                defaultFilename = DefaultInterfaceFilename,
+                defaultFilename = DEFAULT_INTERFACE_FILENAME,
                 template = @"using UnityEngine;
 
     #ROOTNAMESPACEBEGIN#
@@ -61,7 +61,7 @@ public interface #SCRIPTNAME#
             new()
             {
                 templateName = "Create ScriptableObject %&s",
-                defaultFilename = DefaultScriptableFilename,
+                defaultFilename = DEFAULT_SCRIPTABLE_FILENAME,
                 template = @"using UnityEngine;
 
     #ROOTNAMESPACEBEGIN#
@@ -75,7 +75,7 @@ public class #SCRIPTNAME# : ScriptableObject
             new()
             {
                 templateName = "Create Editor ScriptableSingleton",
-                defaultFilename = DefaultScriptableFilename,
+                defaultFilename = DEFAULT_SCRIPTABLE_FILENAME,
                 template = @"using UnityEditor;
 
 #ROOTNAMESPACEBEGIN#
@@ -90,17 +90,19 @@ public class #SCRIPTNAME# : ScriptableObject
 
         private static CSharpTemplatesSettings _config;
         internal static CSharpTemplatesSettings Get => GenerateConfigFile();
-        
+
+        [InitializeOnLoadMethod]
+        private static void BootUp() => GenerateConfigFile();
+
         private static CSharpTemplatesSettings GenerateConfigFile()
         {
             if (_config != null) return _config;
-            _config = AssetDatabase.LoadAssetAtPath<CSharpTemplatesSettings>(CSharpTemplatesConfigFile);
+            _config = AssetDatabase.LoadAssetAtPath<CSharpTemplatesSettings>(C_SHARP_TEMPLATES_CONFIG_FILE);
             if (_config != null) return _config;
             if (!Directory.Exists(C_SHARP_TEMPLATES_CONFIG_PATH))
                 Directory.CreateDirectory(C_SHARP_TEMPLATES_CONFIG_PATH);
             _config = CreateInstance<CSharpTemplatesSettings>();
-            AssetDatabase.CreateAsset(_config, CSharpTemplatesConfigFile);
-            AssetDatabase.SaveAssets();
+            AssetDatabase.CreateAsset(_config, C_SHARP_TEMPLATES_CONFIG_FILE);
             return _config;
         }
         
