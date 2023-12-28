@@ -1,6 +1,6 @@
 {
     "name": "com.lurking-ninja.csharp-templates",
-    "rootNamespace": "LurkingNinja.CSharpTemplates",
+    "rootNamespace": "LurkingNinja.CSharpTemplates.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"
@@ -11,12 +11,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [
-        {
-            "name": "Select...",
-            "expression": "",
-            "define": ""
-        }
-    ],
+    "versionDefines": [],
     "noEngineReferences": false
 }
