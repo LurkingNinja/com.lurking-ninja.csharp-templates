@@ -60,6 +60,10 @@ crashlytics-build.properties
 .cache
 .unsaved
 
-CHANGELOG.md.meta
-LICENSE.meta
-README.md.meta
+[Ll]ibrary
+[Ll]ogs
+[Oo]bj
+[Tt]emp
+[Uu]ser[Ss]ettings
+[Aa]ssets/[Pp]lugins/LurkingNinja
+[Aa]ssets/[Pp]lugins/LurkingNinja.meta
