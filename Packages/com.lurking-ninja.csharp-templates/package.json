@@ -4,7 +4,10 @@
   "version": "1.1.1",
   "unity": "2021.3",
   "description": "Besides improved MonoBehaviour template it gives simple C#, Interface and many more script templates.",
-  "documentationUrl": "https://lurking-ninja.com/",
+  "documentationUrl": "https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates",
+  "changelogUrl": "https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates/blob/main/CHANGELOG.md",
+  "license": "MIT",
+  "licensesUrl": "https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates/blob/main/LICENSE",
   "author": {
     "name": "Lurking Ninja",
     "email": "dev@lurking-ninja.com",

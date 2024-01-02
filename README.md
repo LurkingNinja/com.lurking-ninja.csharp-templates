@@ -1,5 +1,7 @@
 # C# Templates
-Adds the following menu and more importantly shortcuts to create folders and files faster. 
+Adds the following menu and more importantly shortcuts to create folders and files faster.
+
+HOME | [CHANGELOG](./CHANGELOG.md) | [LICENSE](./LICENSE)
 ![Create menu](docs/create_menu.png)
 ## Installation
 You can choose manually installing the package or from GitHub source.
