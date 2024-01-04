@@ -30,18 +30,16 @@ namespace LurkingNinja.CSharpTemplates.Editor
 
         private const string C_SHARP_TEMPLATES_CONFIG_FILE =
             C_SHARP_TEMPLATES_CONFIG_PATH + "/CSharpTemplatesConfig.asset";
-        private const string DEFAULT_INTERFACE_FILENAME = "NewInterfaceScript.cs";
-        private const string DEFAULT_SCRIPTABLE_FILENAME = "NewScriptableObject.cs";
 
-        public List<TemplateEntry> templates = new List<TemplateEntry>
+        public List<TemplateEntry> templates = new()
         {
-            new()
+            new TemplateEntry
             {
                 templateName = "C# Script %&n",
                 defaultFilename = MenuItems.DEFAULT_BEHAVIOR_FILENAME,
                 template = @"using UnityEngine;
 
-    #ROOTNAMESPACEBEGIN#
+#ROOTNAMESPACEBEGIN#
 public class #SCRIPTNAME# : MonoBehaviour
 {
     // Awake is called before the first frame update
@@ -52,46 +50,98 @@ public class #SCRIPTNAME# : MonoBehaviour
 }
 #ROOTNAMESPACEEND#"
             },
-            new()
+            new TemplateEntry
             {
-                templateName = "Create Interface %#i",
-                defaultFilename = DEFAULT_INTERFACE_FILENAME,
+                templateName = "New Interface %#i",
+                defaultFilename = "NewInterface.cs",
                 template = @"using UnityEngine;
 
-    #ROOTNAMESPACEBEGIN#
+#ROOTNAMESPACEBEGIN#
 public interface #SCRIPTNAME#
 {
     #NOTRIM#
 }
 #ROOTNAMESPACEEND#"
             },
-            new()
+            new TemplateEntry
             {
-                templateName = "Create ScriptableObject %&s",
-                defaultFilename = DEFAULT_SCRIPTABLE_FILENAME,
+                templateName = "New ScriptableObject %&s",
+                defaultFilename = "NewScriptableObject.cs",
                 template = @"using UnityEngine;
 
-    #ROOTNAMESPACEBEGIN#
-[CreateAssetMenu]
+#ROOTNAMESPACEBEGIN#
+[CreateAssetMenu(fileName = ""New#SCRIPTNAME#"", menuName = ""#SCRIPTNAME#"")]
 public class #SCRIPTNAME# : ScriptableObject
 {
     #NOTRIM#
 }
 #ROOTNAMESPACEEND#"
             },
-            new()
+            new TemplateEntry
             {
-                templateName = "Create Editor ScriptableSingleton",
-                defaultFilename = DEFAULT_SCRIPTABLE_FILENAME,
+                templateName = "New Editor ScriptableSingleton",
+                defaultFilename = "NewScriptableObject.cs",
                 template = @"using UnityEditor;
 
 #ROOTNAMESPACEBEGIN#
 [FilePath(""#SCRIPTNAME#.save"", FilePathAttribute.Location.ProjectFolder)]
-                public class #SCRIPTNAME# : ScriptableSingleton<#SCRIPTNAME#>
-                {
-#NOTRIM#
-            }
+public class #SCRIPTNAME# : ScriptableSingleton<#SCRIPTNAME#>
+{
+    #NOTRIM#
+}
 #ROOTNAMESPACEEND#"
+            },
+            new TemplateEntry
+            {
+                templateName = "New Struct",
+                defaultFilename = "NewStruct.cs",
+                template = @"using System;
+
+#ROOTNAMESPACEBEGIN#
+public struct #SCRIPTNAME#
+{
+    #NOTRIM#
+}
+#ROOTNAMESPACEEND#"
+            },
+            new TemplateEntry
+            {
+                templateName = "New Text File",
+                defaultFilename = "NewTextFile.txt",
+                template = @" "
+            },
+            new TemplateEntry
+            {
+                templateName = "New JSON",
+                defaultFilename = "NewJson.json",
+                template = @"{}"
+            },
+            new TemplateEntry
+            {
+                templateName = "New XML",
+                defaultFilename = "NewXmlFile.json",
+                template = @"<?xml version=""1.0"" encoding=""utf-8""?>"
+            },
+            new TemplateEntry
+            {
+                templateName = "New Package Manifest",
+                defaultFilename = "NewXmlFile.json",
+                template = @"{
+  ""name"": ""com.default-company.default-package"",
+  ""displayName"": ""Default Package"",
+  ""description"": ""Default Package Details"",
+  ""version"": ""0.0.1"",
+  ""unity"": ""2021.3"",
+  ""documentationUrl"": ""URL to your documentation (shows up in Package Manager)"",
+  ""changelogUrl"": ""URL to your Changelog file (shows up in Package Manager)"",
+  ""license"": ""Name of the License (eg.  MIT)"",
+  ""licensesUrl"": ""URL to your license file (shows up in Package Manager)"",
+  ""author"": {
+    ""name"": ""Your  (author) name"",
+    ""email"": ""Your (author) email"",
+    ""url"": ""URL to your chosen website""
+  }
+}"
             }
         };
 

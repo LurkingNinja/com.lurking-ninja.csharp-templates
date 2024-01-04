@@ -1,6 +1,14 @@
 ﻿# Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2024-01-04
+### Added
+- Struct template
+- Txt template
+- Json template
+- Xml template
+- Package Manifest template
+
 ## [1.1.1] - 2023-10-15
 ### Changed
 - Remove AssetDatabase.SaveAssets call
