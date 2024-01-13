@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.lurkingninja.csharp-templates": {
+    "com.lurking-ninja.csharp-templates": {
       "version": "file:com.lurking-ninja.csharp-templates",
       "depth": 0,
       "source": "embedded",

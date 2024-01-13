@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.lurkingninja.csharp-templates": "file:D:/Packages/com.lurking-ninja.csharp-templates",
+    "com.lurking-ninja.csharp-templates": "file:D:/Packages/-CSharp-Templates/Packages/com.lurking-ninja.csharp-templates",
     "com.unity.burst": "1.8.11",
     "com.unity.collections": "2.1.4",
     "com.unity.ide.rider": "3.0.27",
