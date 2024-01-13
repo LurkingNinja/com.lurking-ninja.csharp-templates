@@ -30,7 +30,7 @@ namespace LurkingNinja.CSharpTemplates.Editor
             return _oneMenu.ToString();
         }
 
-        private static string GenerateAllMenus()
+        internal static string GenerateAllMenus()
         {
             var setting = CSharpTemplatesSettings.Get;
             _allMenus.Clear();

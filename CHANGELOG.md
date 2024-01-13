@@ -1,6 +1,9 @@
 ﻿# Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.3] - 2024-01-12
+### Changed
+- The templates added in 1.1.2 moved to publicly available
 ## [1.1.2] - 2024-01-04
 ### Added
 - Struct template

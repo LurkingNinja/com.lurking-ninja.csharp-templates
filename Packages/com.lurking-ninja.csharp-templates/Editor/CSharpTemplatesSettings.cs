@@ -125,7 +125,7 @@ public struct #SCRIPTNAME#
             new TemplateEntry
             {
                 templateName = "New Package Manifest",
-                defaultFilename = "NewXmlFile.json",
+                defaultFilename = "package.json",
                 template = @"{
   ""name"": ""com.default-company.default-package"",
   ""displayName"": ""Default Package"",
@@ -149,7 +149,11 @@ public struct #SCRIPTNAME#
         internal static CSharpTemplatesSettings Get => GenerateConfigFile();
 
         [InitializeOnLoadMethod]
-        private static void BootUp() => GenerateConfigFile();
+        private static void BootUp()
+        {
+            GenerateConfigFile();
+            OnCSharpTemplateConfigPostProcessor.GenerateAllMenus();
+        }
 
         private static CSharpTemplatesSettings GenerateConfigFile()
         {
@@ -163,7 +167,7 @@ public struct #SCRIPTNAME#
             return _config;
         }
         
-        [MenuItem("Tools/LurkingNinja/CSharp Templates Config", false)]
+        [MenuItem("Tools/LurkingNinja/C# Templates Config", false)]
         private static void CSharpTemplatesConfig()
         {
             GenerateConfigFile();
