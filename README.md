@@ -27,14 +27,9 @@ In the next screenshot of the Inspector show how you can remove or add new scrip
 
 ## Changelog
 
-### [1.1.2] - 2024-01-04
-
-#### Added
-
-- Struct template
-- Txt template
-- Json template
-- Xml template
-- Package Manifest template
+## [1.1.4] - 2024-10-21
+### Changed
+- Update coding style
+- Update to Unity version 2022.3.50f1
 
 [Previous changes](./CHANGELOG.md)

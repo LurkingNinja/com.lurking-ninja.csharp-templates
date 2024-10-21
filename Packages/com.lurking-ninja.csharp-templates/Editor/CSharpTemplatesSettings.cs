@@ -5,14 +5,14 @@
  * MIT License
  * https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates
  */
-using System;
-using System.Collections.Generic;
-using System.IO;
-using UnityEditor;
-using UnityEngine;
-
 namespace LurkingNinja.CSharpTemplates.Editor
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using UnityEditor;
+    using UnityEngine;
+
     [Serializable]
     public struct TemplateEntry
     {
@@ -28,7 +28,7 @@ namespace LurkingNinja.CSharpTemplates.Editor
         internal const string C_SHARP_TEMPLATES_MENU_FILE =
             C_SHARP_TEMPLATES_CONFIG_PATH + "/MenuItems.cs";
 
-        private const string C_SHARP_TEMPLATES_CONFIG_FILE =
+        private const string _C_SHARP_TEMPLATES_CONFIG_FILE =
             C_SHARP_TEMPLATES_CONFIG_PATH + "/CSharpTemplatesConfig.asset";
 
         public List<TemplateEntry> templates = new()
@@ -158,12 +158,12 @@ public struct #SCRIPTNAME#
         private static CSharpTemplatesSettings GenerateConfigFile()
         {
             if (_config != null) return _config;
-            _config = AssetDatabase.LoadAssetAtPath<CSharpTemplatesSettings>(C_SHARP_TEMPLATES_CONFIG_FILE);
+            _config = AssetDatabase.LoadAssetAtPath<CSharpTemplatesSettings>(_C_SHARP_TEMPLATES_CONFIG_FILE);
             if (_config != null) return _config;
             if (!Directory.Exists(C_SHARP_TEMPLATES_CONFIG_PATH))
                 Directory.CreateDirectory(C_SHARP_TEMPLATES_CONFIG_PATH);
             _config = CreateInstance<CSharpTemplatesSettings>();
-            AssetDatabase.CreateAsset(_config, C_SHARP_TEMPLATES_CONFIG_FILE);
+            AssetDatabase.CreateAsset(_config, _C_SHARP_TEMPLATES_CONFIG_FILE);
             return _config;
         }
         

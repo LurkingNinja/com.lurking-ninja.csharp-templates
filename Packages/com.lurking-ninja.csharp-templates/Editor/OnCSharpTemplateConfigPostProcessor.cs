@@ -5,48 +5,48 @@
  * MIT License
  * https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates
  */
-using System.IO;
-using System.Text;
-using UnityEditor;
-using Object = UnityEngine.Object;
-
 namespace LurkingNinja.CSharpTemplates.Editor
 {
+    using System.IO;
+    using System.Text;
+    using UnityEditor;
+    using Object = UnityEngine.Object;
+
     public class OnCSharpTemplateConfigPostProcessor : AssetPostprocessor
     {
-        private static readonly StringBuilder _oneMenu = new ();
-        private static readonly StringBuilder _allMenus = new ();
+        private static readonly StringBuilder _ONE_MENU = new ();
+        private static readonly StringBuilder _ALL_MENUS = new ();
 
         internal static string GenerateTemplateFilename(int index) =>
             $"{CSharpTemplatesSettings.C_SHARP_TEMPLATES_CONFIG_PATH}/template{index}.cs.txt";
         
         private static string GenerateMenu(int index, TemplateEntry entry, string path)
         {
-            _oneMenu.Clear();
-            _oneMenu.AppendLine($"[MenuItem(\"{MenuItems.BASE_MENU_CS}{entry.templateName}\", false, {10013 + index})]");
-            _oneMenu.Append(
+            _ONE_MENU.Clear();
+            _ONE_MENU.AppendLine($"[MenuItem(\"{MenuItems.BASE_MENU_CS}{entry.templateName}\", false, {10013 + index})]");
+            _ONE_MENU.Append(
                 $"public static void CreateMenu{index}() => ProjectWindowUtil.CreateScriptAssetFromTemplateFile(");
-            _oneMenu.AppendLine($"\"{path}\", \"{entry.defaultFilename}\");");
-            return _oneMenu.ToString();
+            _ONE_MENU.AppendLine($"\"{path}\", \"{entry.defaultFilename}\");");
+            return _ONE_MENU.ToString();
         }
 
         internal static string GenerateAllMenus()
         {
             var setting = CSharpTemplatesSettings.Get;
-            _allMenus.Clear();
-            _allMenus.AppendLine("using UnityEditor;");
-            _allMenus.AppendLine("namespace LurkingNinja.CSharpTemplates.Editor {");
-            _allMenus.AppendLine("public static partial class MenuItems {");
+            _ALL_MENUS.Clear();
+            _ALL_MENUS.AppendLine("using UnityEditor;");
+            _ALL_MENUS.AppendLine("namespace LurkingNinja.CSharpTemplates.Editor {");
+            _ALL_MENUS.AppendLine("public static partial class MenuItems {");
             for (var index = 0; index < setting.templates.Count; index++)
             {
                 var path = GenerateTemplateFilename(index);
                 using var writer = new StreamWriter(path, false);
                 writer.WriteLine(setting.templates[index].template);
-                _allMenus.AppendLine(GenerateMenu(index, setting.templates[index], path));
+                _ALL_MENUS.AppendLine(GenerateMenu(index, setting.templates[index], path));
                 AssetDatabase.ImportAsset(path);
             }
-            _allMenus.AppendLine("}}");
-            return _allMenus.ToString();
+            _ALL_MENUS.AppendLine("}}");
+            return _ALL_MENUS.ToString();
         }
         
         private static void GenerateFile()
@@ -63,8 +63,7 @@ namespace LurkingNinja.CSharpTemplates.Editor
             string[] movedAssets, string[] movedFromAssetPaths)
         {
             foreach (var path in importedAssets)
-                if (AssetDatabase.LoadAssetAtPath<Object>(path) is CSharpTemplatesSettings)
-                    GenerateFile();
+                if (AssetDatabase.LoadAssetAtPath<Object>(path) is CSharpTemplatesSettings) GenerateFile();
         }
     }
 
