@@ -18,18 +18,31 @@ https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates.git?path=Pack
 3. Open your project and check if it is imported properly.
 
 ## Usage
-Opening the ```Tools/LurkingNinja/CSharp Template Config``` menu point, you will be taken to the settings scriptable object in an Editor folder. This file purely exists in the Editor, won't be inserted into your built game.
-![Open settings](docs/open_settings.png)
+Open the ```Project Settings/C# Templates``` tab and edit the templates as needed. The template name is used
+as the name of the menu as well in the context menu. You can add [shortcut codes](https://docs.unity3d.com/ScriptReference/MenuItem.html) to the name so Unity will register
+those to this function. 
+![Open settings](docs/open_project_settings.png)
 
-In the next screenshot of the Inspector show how you can remove or add new script templates. The package will generate the necessary files to be able to use your newly added template. You will find the new menu points in the same menu, below the built-in ones. You can add shortcuts to the name as usual. See the standard add-on templates as examples. 
-
-![Settings](docs/settings.png)
+### Usable template variables
+There are a few usable template variables Unity can accept.
+#### #ROOTNAMESPACEBEGIN#
+The beginning of the file, where the ```namespace <namespace> {``` lines go if namespaces are used.
+#### #ROOTNAMESPACEEND#
+The end of file where the closing ```{``` goes if namespaces are used.
+#### #NOTRIM#
+The place of the focus.
+#### #SCRIPTNAME#
+Usually it is the name both of the script and class, you can edit it when you create the file.
 
 ## Changelog
 
-## [1.1.4] - 2024-10-21
+## [1.2.0] - 2024-10-24
 ### Changed
-- Update coding style
-- Update to Unity version 2022.3.50f1
+- Settings moved to Project Settings (See Project Settings/C# Templates tab)
+### Added
+- Individual templates can be enabled or disabled
+- Reset templates functionality will delete all previously edited or added templates and restore the built-in ones
+### Removed
+- Old ScriptableObject based settings stored in Plugins/LurkingNinja/Editor folder
 
 [Previous changes](./CHANGELOG.md)
