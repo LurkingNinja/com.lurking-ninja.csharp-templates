@@ -1,6 +1,16 @@
 ﻿# Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2024-10-24
+### Changed
+- Settings moved to Project Settings (See Project Settings/C# Templates tab)
+### Added
+- Individual templates can be enabled or disabled
+- Reset templates functionality will delete all previously edited or added templates and restore the built-in ones
+### Removed
+- Old ScriptableObject based settings stored in Plugins/LurkingNinja/Editor folder
+
+
 ## [1.1.4] - 2024-10-21
 ### Changed
 - Update coding style

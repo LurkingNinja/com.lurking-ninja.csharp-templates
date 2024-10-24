@@ -1,40 +1,47 @@
 /***
- * C# Templates
+ * Lurking Ninja CodeGen
  * Copyright (c) 2022-2024 Lurking Ninja.
  *
  * MIT License
- * https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates
+ * https://github.com/LurkingNinja/com.lurking-ninja.codegen
  */
 namespace LurkingNinja.CSharpTemplates.Editor
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using UnityEditor;
     using UnityEngine;
 
-    [Serializable]
-    public struct TemplateEntry
-    {
-        public string templateName;
-        public string defaultFilename;
-        [TextArea(10, 20)]
-        public string template;
-    }
-    
-    public class CSharpTemplatesSettings : ScriptableObject
+    [FilePath("ProjectSettings/CSharpTemplatesSettings.asset", FilePathAttribute.Location.ProjectFolder)]
+    public class CSharpTemplatesSettings : ScriptableSingleton<CSharpTemplatesSettings>
     {
         internal const string C_SHARP_TEMPLATES_CONFIG_PATH = "Assets/Plugins/LurkingNinja/Editor";
         internal const string C_SHARP_TEMPLATES_MENU_FILE =
-            C_SHARP_TEMPLATES_CONFIG_PATH + "/MenuItems.cs";
+                C_SHARP_TEMPLATES_CONFIG_PATH + "/MenuItems.cs";
+        
+        [Serializable]
+        public struct TemplateEntry
+        {
+            public bool enabled;
+            public string templateName;
+            public string defaultFilename;
+            public string template;
+        }
 
-        private const string _C_SHARP_TEMPLATES_CONFIG_FILE =
-            C_SHARP_TEMPLATES_CONFIG_PATH + "/CSharpTemplatesConfig.asset";
+        public static TemplateEntry Get(int index) => instance.templates[index];
+        
+        public static int Count => instance.templates.Count;
 
-        public List<TemplateEntry> templates = new()
+        [SerializeField]
+        private List<TemplateEntry> templates = GetDefaultTemplates(); 
+        
+        internal static void ResetTemplates() => instance.templates = GetDefaultTemplates();
+        
+        private static List<TemplateEntry> GetDefaultTemplates() => new()
         {
             new TemplateEntry
             {
+                enabled = true,
                 templateName = "C# Script %&n",
                 defaultFilename = MenuItems.DEFAULT_BEHAVIOR_FILENAME,
                 template = @"using UnityEngine;
@@ -52,6 +59,7 @@ public class #SCRIPTNAME# : MonoBehaviour
             },
             new TemplateEntry
             {
+                enabled = true,
                 templateName = "New Interface %#i",
                 defaultFilename = "NewInterface.cs",
                 template = @"using UnityEngine;
@@ -65,6 +73,7 @@ public interface #SCRIPTNAME#
             },
             new TemplateEntry
             {
+                enabled = true,
                 templateName = "New ScriptableObject %&s",
                 defaultFilename = "NewScriptableObject.cs",
                 template = @"using UnityEngine;
@@ -79,6 +88,7 @@ public class #SCRIPTNAME# : ScriptableObject
             },
             new TemplateEntry
             {
+                enabled = true,
                 templateName = "New Editor ScriptableSingleton",
                 defaultFilename = "NewScriptableObject.cs",
                 template = @"using UnityEditor;
@@ -93,6 +103,7 @@ public class #SCRIPTNAME# : ScriptableSingleton<#SCRIPTNAME#>
             },
             new TemplateEntry
             {
+                enabled = true,
                 templateName = "New Struct",
                 defaultFilename = "NewStruct.cs",
                 template = @"using System;
@@ -106,24 +117,28 @@ public struct #SCRIPTNAME#
             },
             new TemplateEntry
             {
+                enabled = true,
                 templateName = "New Text File",
                 defaultFilename = "NewTextFile.txt",
                 template = @" "
             },
             new TemplateEntry
             {
+                enabled = true,
                 templateName = "New JSON",
                 defaultFilename = "NewJson.json",
                 template = @"{}"
             },
             new TemplateEntry
             {
+                enabled = true,
                 templateName = "New XML",
                 defaultFilename = "NewXmlFile.json",
                 template = @"<?xml version=""1.0"" encoding=""utf-8""?>"
             },
             new TemplateEntry
             {
+                enabled = true,
                 templateName = "New Package Manifest",
                 defaultFilename = "package.json",
                 template = @"{
@@ -144,36 +159,11 @@ public struct #SCRIPTNAME#
 }"
             }
         };
-
-        private static CSharpTemplatesSettings _config;
-        internal static CSharpTemplatesSettings Get => GenerateConfigFile();
-
-        [InitializeOnLoadMethod]
-        private static void BootUp()
-        {
-            GenerateConfigFile();
-            OnCSharpTemplateConfigPostProcessor.GenerateAllMenus();
-        }
-
-        private static CSharpTemplatesSettings GenerateConfigFile()
-        {
-            if (_config != null) return _config;
-            _config = AssetDatabase.LoadAssetAtPath<CSharpTemplatesSettings>(_C_SHARP_TEMPLATES_CONFIG_FILE);
-            if (_config != null) return _config;
-            if (!Directory.Exists(C_SHARP_TEMPLATES_CONFIG_PATH))
-                Directory.CreateDirectory(C_SHARP_TEMPLATES_CONFIG_PATH);
-            _config = CreateInstance<CSharpTemplatesSettings>();
-            AssetDatabase.CreateAsset(_config, _C_SHARP_TEMPLATES_CONFIG_FILE);
-            return _config;
-        }
         
-        [MenuItem("Tools/LurkingNinja/C# Templates Config", false)]
-        private static void CSharpTemplatesConfig()
-        {
-            GenerateConfigFile();
-            EditorUtility.FocusProjectWindow();
-            EditorGUIUtility.PingObject(_config);
-            Selection.activeObject = _config;
-        }
+        internal static SerializedObject GetSerializedSettings() => new(instance);
+
+        internal static void Save() => instance.Save(true);
+        
+        private void OnDisable() => Save();
     }
 }
