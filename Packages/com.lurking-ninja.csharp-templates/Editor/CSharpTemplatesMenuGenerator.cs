@@ -17,18 +17,18 @@ namespace LurkingNinja.CSharpTemplates.Editor
     {
         private const string _TEMPLATE_FILE_SEARCH = "template t:textAsset";
         private static readonly string[] _TEMPLATE_PATH_TO_SEARCH =
-                { CSharpTemplatesSettings.C_SHARP_TEMPLATES_CONFIG_PATH };
+                { CSharpTemplatesSettings._C_SHARP_TEMPLATES_CONFIG_PATH };
         
         private static readonly StringBuilder _ONE_MENU = new();
         private static readonly StringBuilder _ALL_MENUS = new();
 
         private static string GenerateTemplateFilename(int index) =>
-            $"{CSharpTemplatesSettings.C_SHARP_TEMPLATES_CONFIG_PATH}/template{index}.cs.txt";
+            $"{CSharpTemplatesSettings._C_SHARP_TEMPLATES_CONFIG_PATH}/template{index}.cs.txt";
         
         private static string GenerateMenu(int index, CSharpTemplatesSettings.TemplateEntry entry, string path)
         {
             _ONE_MENU.Clear();
-            _ONE_MENU.AppendLine($"[MenuItem(\"{MenuItems.BASE_MENU_CS}{entry.templateName}\", false, {10013 + index})]");
+            _ONE_MENU.AppendLine($"[MenuItem(\"{MenuItems._BASE_MENU_CS}{entry.templateName}\", false, {10013 + index})]");
             _ONE_MENU.Append(
                 $"public static void CreateMenu{index}() => ProjectWindowUtil.CreateScriptAssetFromTemplateFile(");
             _ONE_MENU.AppendLine($"\"{path}\", \"{entry.defaultFilename}\");");
@@ -71,11 +71,11 @@ namespace LurkingNinja.CSharpTemplates.Editor
 
         internal static void GenerateMenuFile()
         {
-            if (!Directory.Exists(CSharpTemplatesSettings.C_SHARP_TEMPLATES_CONFIG_PATH))
-                Directory.CreateDirectory(CSharpTemplatesSettings.C_SHARP_TEMPLATES_CONFIG_PATH);
-            using var writer = new StreamWriter(CSharpTemplatesSettings.C_SHARP_TEMPLATES_MENU_FILE, false);
+            if (!Directory.Exists(CSharpTemplatesSettings._C_SHARP_TEMPLATES_CONFIG_PATH))
+                Directory.CreateDirectory(CSharpTemplatesSettings._C_SHARP_TEMPLATES_CONFIG_PATH);
+            using var writer = new StreamWriter(CSharpTemplatesSettings._C_SHARP_TEMPLATES_MENU_FILE, false);
             writer.WriteLine(GenerateAllMenus());
-            AssetDatabase.ImportAsset(CSharpTemplatesSettings.C_SHARP_TEMPLATES_MENU_FILE);
+            AssetDatabase.ImportAsset(CSharpTemplatesSettings._C_SHARP_TEMPLATES_MENU_FILE);
         }
     }
 }

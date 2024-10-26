@@ -15,9 +15,9 @@ namespace LurkingNinja.CSharpTemplates.Editor
     [FilePath("ProjectSettings/CSharpTemplatesSettings.asset", FilePathAttribute.Location.ProjectFolder)]
     public class CSharpTemplatesSettings : ScriptableSingleton<CSharpTemplatesSettings>
     {
-        internal const string C_SHARP_TEMPLATES_CONFIG_PATH = "Assets/Plugins/LurkingNinja/Editor";
-        internal const string C_SHARP_TEMPLATES_MENU_FILE =
-                C_SHARP_TEMPLATES_CONFIG_PATH + "/MenuItems.cs";
+        internal const string _C_SHARP_TEMPLATES_CONFIG_PATH = "Assets/Plugins/LurkingNinja/Editor";
+        internal const string _C_SHARP_TEMPLATES_MENU_FILE =
+                _C_SHARP_TEMPLATES_CONFIG_PATH + "/MenuItems.cs";
         
         [Serializable]
         public struct TemplateEntry
@@ -43,7 +43,7 @@ namespace LurkingNinja.CSharpTemplates.Editor
             {
                 enabled = true,
                 templateName = "C# Script %&n",
-                defaultFilename = MenuItems.DEFAULT_BEHAVIOR_FILENAME,
+                defaultFilename = MenuItems._DEFAULT_BEHAVIOR_FILENAME,
                 template = @"using UnityEngine;
 
 #ROOTNAMESPACEBEGIN#

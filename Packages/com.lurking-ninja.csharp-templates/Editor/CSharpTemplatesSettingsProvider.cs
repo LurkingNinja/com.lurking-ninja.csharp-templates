@@ -13,7 +13,7 @@ namespace LurkingNinja.CSharpTemplates.Editor
 
     public class CSharpTemplatesSettingsProvider : SettingsProvider
     {
-        private const string _SETTINGS_PATH = "Project/C# Templates";
+        private const string _SETTINGS_PATH = "Project/Lurking Ninja/C# Templates";
 
         private SerializedObject _serializedSettings;
 

@@ -18,7 +18,7 @@ https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates.git?path=Pack
 3. Open your project and check if it is imported properly.
 
 ## Usage
-Open the ```Project Settings/C# Templates``` tab and edit the templates as needed. The template name is used
+Open the ```Project Settings/Lurking Ninja/C# Templates``` tab and edit the templates as needed. The template name is used
 as the name of the menu as well in the context menu. You can add [shortcut codes](https://docs.unity3d.com/ScriptReference/MenuItem.html) to the name so Unity will register
 those to this function. 
 ![Open settings](docs/open_project_settings.png)
