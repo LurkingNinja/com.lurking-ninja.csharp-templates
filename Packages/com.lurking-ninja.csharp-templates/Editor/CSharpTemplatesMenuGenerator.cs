@@ -28,7 +28,7 @@ namespace LurkingNinja.CSharpTemplates.Editor
         private static string GenerateMenu(int index, CSharpTemplatesSettings.TemplateEntry entry, string path)
         {
             _ONE_MENU.Clear();
-            _ONE_MENU.AppendLine($"[MenuItem(\"{MenuItems._BASE_MENU_CS}{entry.templateName}\", false, {10013 + index})]");
+            _ONE_MENU.AppendLine($"[MenuItem(\"{MenuItems._BASE_MENU_CS}{entry.templateName}\", false, {10100 + index})]");
             _ONE_MENU.Append(
                 $"public static void CreateMenu{index}() => ProjectWindowUtil.CreateScriptAssetFromTemplateFile(");
             _ONE_MENU.AppendLine($"\"{path}\", \"{entry.defaultFilename}\");");

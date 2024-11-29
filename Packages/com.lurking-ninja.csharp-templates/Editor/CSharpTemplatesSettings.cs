@@ -3,8 +3,9 @@
  * Copyright (c) 2022-2024 Lurking Ninja.
  *
  * MIT License
- * https://github.com/LurkingNinja/com.lurking-ninja.codegen
+ * https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates
  */
+// ReSharper disable UseRawString
 namespace LurkingNinja.CSharpTemplates.Editor
 {
     using System;
@@ -39,24 +40,26 @@ namespace LurkingNinja.CSharpTemplates.Editor
         
         private static List<TemplateEntry> GetDefaultTemplates() => new()
         {
+#if !UNITY_6000_0_OR_NEWER
             new TemplateEntry
             {
                 enabled = true,
                 templateName = "C# Script %&n",
-                defaultFilename = MenuItems._DEFAULT_BEHAVIOR_FILENAME,
+                defaultFilename = "NewBehaviourScript.cs",
                 template = @"using UnityEngine;
 
-#ROOTNAMESPACEBEGIN#
-public class #SCRIPTNAME# : MonoBehaviour
-{
-    // Awake is called before the first frame update
-    private void Awake()
+\#ROOTNAMESPACEBEGIN#
+    public class #SCRIPTNAME# : MonoBehaviour
     {
-        #NOTRIM#
+        // Awake is called before the first frame update
+        private void Awake()
+        {
+            \#NOTRIM#
+        }
     }
-}
-#ROOTNAMESPACEEND#"
+\#ROOTNAMESPACEEND#"
             },
+#endif
             new TemplateEntry
             {
                 enabled = true,
@@ -65,12 +68,13 @@ public class #SCRIPTNAME# : MonoBehaviour
                 template = @"using UnityEngine;
 
 #ROOTNAMESPACEBEGIN#
-public interface #SCRIPTNAME#
-{
-    #NOTRIM#
-}
+    public interface #SCRIPTNAME#
+    {
+        #NOTRIM#
+    }
 #ROOTNAMESPACEEND#"
             },
+#if !UNITY_6000_0_OR_NEWER
             new TemplateEntry
             {
                 enabled = true,
@@ -78,14 +82,15 @@ public interface #SCRIPTNAME#
                 defaultFilename = "NewScriptableObject.cs",
                 template = @"using UnityEngine;
 
-#ROOTNAMESPACEBEGIN#
-[CreateAssetMenu(fileName = ""New#SCRIPTNAME#"", menuName = ""#SCRIPTNAME#"")]
-public class #SCRIPTNAME# : ScriptableObject
-{
-    #NOTRIM#
-}
-#ROOTNAMESPACEEND#"
+\#ROOTNAMESPACEBEGIN#
+    [CreateAssetMenu(fileName = ""New#SCRIPTNAME#"", menuName = ""#SCRIPTNAME#"")]
+    public class #SCRIPTNAME# : ScriptableObject
+    {
+        \#NOTRIM#
+    }
+\#ROOTNAMESPACEEND#"
             },
+#endif
             new TemplateEntry
             {
                 enabled = true,
@@ -94,11 +99,11 @@ public class #SCRIPTNAME# : ScriptableObject
                 template = @"using UnityEditor;
 
 #ROOTNAMESPACEBEGIN#
-[FilePath(""#SCRIPTNAME#.save"", FilePathAttribute.Location.ProjectFolder)]
-public class #SCRIPTNAME# : ScriptableSingleton<#SCRIPTNAME#>
-{
-    #NOTRIM#
-}
+    [FilePath(""#SCRIPTNAME#.save"", FilePathAttribute.Location.ProjectFolder)]
+    public class #SCRIPTNAME# : ScriptableSingleton<#SCRIPTNAME#>
+    {
+        #NOTRIM#
+    }
 #ROOTNAMESPACEEND#"
             },
             new TemplateEntry
@@ -109,10 +114,10 @@ public class #SCRIPTNAME# : ScriptableSingleton<#SCRIPTNAME#>
                 template = @"using System;
 
 #ROOTNAMESPACEBEGIN#
-public struct #SCRIPTNAME#
-{
-    #NOTRIM#
-}
+    public struct #SCRIPTNAME#
+    {
+        #NOTRIM#
+    }
 #ROOTNAMESPACEEND#"
             },
             new TemplateEntry

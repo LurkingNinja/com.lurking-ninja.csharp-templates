@@ -36,13 +36,8 @@ Usually it is the name both of the script and class, you can edit it when you cr
 
 ## Changelog
 
-## [1.2.0] - 2024-10-24
+## [1.3.0] - 2024-11-29
 ### Changed
-- Settings moved to Project Settings (See Project Settings/C# Templates tab)
-### Added
-- Individual templates can be enabled or disabled
-- Reset templates functionality will delete all previously edited or added templates and restore the built-in ones
-### Removed
-- Old ScriptableObject based settings stored in Plugins/LurkingNinja/Editor folder
+- Made compatible with Unity 6000.x (updating from 2023.x need to hit the `Reset templates` button)
 
 [Previous changes](./CHANGELOG.md)

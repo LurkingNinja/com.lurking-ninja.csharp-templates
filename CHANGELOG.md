@@ -1,6 +1,10 @@
 ﻿# Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2024-11-29
+### Changed
+- Made compatible with Unity 6000.x (updating from 2023.x need to hit the `Reset templates` button)
+
 ## [1.2.0] - 2024-10-24
 ### Changed
 - Settings moved to Project Settings (See Project Settings/C# Templates tab)

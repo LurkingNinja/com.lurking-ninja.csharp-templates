@@ -2,7 +2,7 @@
   "name": "com.lurking-ninja.csharp-templates",
   "displayName": "C# Templates",
   "description": "Besides improved MonoBehaviour template it gives simple C#, Interface and many more script templates.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "unity": "2021.3",
   "documentationUrl": "https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates",
   "changelogUrl": "https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates/blob/main/CHANGELOG.md",
