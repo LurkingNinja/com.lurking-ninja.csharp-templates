@@ -1,43 +1,6 @@
 # C# Templates
-Adds the following menu and more importantly shortcuts to create folders and files faster.
-![Create menu](docs/create_menu.png)
+Because of GitHub's uncontrolled AI infestation this repository has moved to [Codeberg](https://codeberg.org/LurkingNinja/com.lurking-ninja.csharp-templates).
 
-## Installation
-You can choose manually installing the package or from GitHub source.
+The notification will go away in October of 2025.
 
-### Add package from git URL
-Use the Package Manager's ```+/Add package from git URL``` function.
-The URL you should use is this:
-```
-https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates.git?path=Packages/com.lurking-ninja.csharp-templates
-```
-
-### Manual install
-1. Download the latest ```.zip``` package from the [Release](https://github.com/LurkingNinja/com.lurking-ninja.csharp-templates/releases) section.
-2. Unpack the ```.zip``` file into your project's ```Packages``` folder.
-3. Open your project and check if it is imported properly.
-
-## Usage
-Open the ```Project Settings/Lurking Ninja/C# Templates``` tab and edit the templates as needed. The template name is used
-as the name of the menu as well in the context menu. You can add [shortcut codes](https://docs.unity3d.com/ScriptReference/MenuItem.html) to the name so Unity will register
-those to this function. 
-![Open settings](docs/open_project_settings.png)
-
-### Usable template variables
-There are a few usable template variables Unity can accept.
-#### #ROOTNAMESPACEBEGIN#
-The beginning of the file, where the ```namespace <namespace> {``` lines go if namespaces are used.
-#### #ROOTNAMESPACEEND#
-The end of file where the closing ```}``` goes if namespaces are used.
-#### #NOTRIM#
-The place of the focus.
-#### #SCRIPTNAME#
-Usually it is the name both of the script and class, you can edit it when you create the file.
-
-## Changelog
-
-## [1.3.0] - 2024-11-29
-### Changed
-- Made compatible with Unity 6000.x (updating from 2023.x need to hit the `Reset templates` button)
-
-[Previous changes](./CHANGELOG.md)
+https://codeberg.org/LurkingNinja/com.lurking-ninja.csharp-templates
